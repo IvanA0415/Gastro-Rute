@@ -4,7 +4,7 @@ hola
 TRABAJO EN EQUIPO
 
 ANYELO GALERA 
-
+Ivan Arjona
 
 ACTUALIZACION
 
