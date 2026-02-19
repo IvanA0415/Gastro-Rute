@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # gastro_rute
 
 A new Flutter project.
@@ -15,3 +16,6 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 necsoincds
+=======
+# Gastro-Rute
+>>>>>>> d7c07cd7c4649bd2a8667c21c808d633f98cb044
