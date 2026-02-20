@@ -8,7 +8,13 @@ Ivan Arjona
 MANUEL CELIS
 Manuel Coyoc
 Walter Marin
-ACTUALIZACION
+
+
+-------  Asignacion de Trabajos ----------------------
+Detail Page → Ivan
+Favoritos → Celis
+Sign-Up + Perfil → Coyoc
+Mapa → Walter
  
-Esta es la actualizacion 3
+
 >>>>>>> 406986fa41dd4a9ac72105d53f5a180a80c2ce28
