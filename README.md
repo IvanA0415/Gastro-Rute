@@ -7,7 +7,7 @@ ANYELO GALERA
 Ivan Arjona
 MANUEL CELIS
 Manuel Coyoc
-
+Walter Marin
 ACTUALIZACION
  
 Esta es la actualizacion 3
