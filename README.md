@@ -12,7 +12,7 @@ Walter Marin
 
 -------  Asignacion de Trabajos ----------------------
 Detail Page -> Ivan
-Main ->
+Main -> Anyelo
 Favoritos -> Celis
 Sign-Up + Perfil -> Coyoc
 Mapa -> Walter
