@@ -11,7 +11,7 @@ class AppIcons {
   // Navegación
 
   static const IconData navHome = Icons.home;
-  static const IconData navMap = Icons.location_on;
+  static const IconData navMap = Icons.location_pin;
   static const IconData navFavorites = Icons.favorite;
   static const IconData navProfile = Icons.person;
 
@@ -26,5 +26,5 @@ class AppIcons {
   static const IconData star = Icons.star;
   static const IconData starBorder = Icons.star_border;
 
-  static const IconData back = Icons.arrow_back;
+  static const IconData back = Icons.chevron_left;
 }
