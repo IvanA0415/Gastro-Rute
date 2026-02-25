@@ -23,8 +23,8 @@ class AppSizes {
   static const double favoritesCarouselHeight = 176;
   static const double favoritesCarouselRadius = 8;
 
-  static const double profileImageWidth = 195;
-  static const double profileImageHeight = 183;
+  static const double profileImageWidth = 190;
+  static const double profileImageHeight = 190;
 
   // 🔹 Botones
   static const double detailButtonWidth = 91;
