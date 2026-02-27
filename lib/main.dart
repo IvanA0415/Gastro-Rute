@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gastro_rute/features/main/main_screen.dart';
 import 'core/theme/app_theme.dart';
-import 'features/map/map_screen.dart';
+import 'features/main/main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Restaurantes App',
       theme: AppTheme.lightTheme,
-      home: const MapaScreen(),
-    );
+      home: const MainScreen (),
+ );
   }
 }
