@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
-import 'features/profile/profile_screen.dart';
+import 'features/map/map_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Restaurantes App',
       theme: AppTheme.lightTheme,
-      home: const ProfileScreen(),
+      home: const MapaScreen(),
     );
   }
 }
