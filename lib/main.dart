@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
-import 'features/favorites/favorites_screen.dart';
+import '../features/main/main_screen.dart';
 
 
 void main() {
@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Restaurantes App',
       theme: AppTheme.lightTheme,
-      home: const FavoritesScreen(),
- );
+      home: const MainScreen(),
+    );
 
   }
 }
