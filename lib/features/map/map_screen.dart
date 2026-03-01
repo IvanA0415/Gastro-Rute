@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MapaScreen extends StatelessWidget {
   const MapaScreen({super.key});
@@ -10,8 +11,7 @@ class MapaScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-
-            // 🔎 BUSCADOR + FILTROS
+            // BUSCADOR + FILTROS
             Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
@@ -23,7 +23,7 @@ class MapaScreen extends StatelessWidget {
               ),
             ),
 
-            // 🗺️ MAPA FALSO
+            // MAPA FALSO
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: SizedBox(
@@ -38,10 +38,26 @@ class MapaScreen extends StatelessWidget {
                     ),
 
                     Positioned(top: 40, left: 40, child: _PriceBubble("\$234")),
-                    Positioned(top: 70, right: 50, child: _PriceBubble("\$299")),
-                    Positioned(top: 120, left: 140, child: _PriceBubble("\$123", selected: true)),
-                    Positioned(bottom: 40, left: 90, child: _PriceBubble("\$345")),
-                    Positioned(bottom: 70, right: 70, child: _PriceBubble("\$176")),
+                    Positioned(
+                      top: 70,
+                      right: 50,
+                      child: _PriceBubble("\$299"),
+                    ),
+                    Positioned(
+                      top: 120,
+                      left: 140,
+                      child: _PriceBubble("\$123", selected: true),
+                    ),
+                    Positioned(
+                      bottom: 40,
+                      left: 90,
+                      child: _PriceBubble("\$345"),
+                    ),
+                    Positioned(
+                      bottom: 70,
+                      right: 70,
+                      child: _PriceBubble("\$176"),
+                    ),
                   ],
                 ),
               ),
@@ -49,7 +65,7 @@ class MapaScreen extends StatelessWidget {
 
             const SizedBox(height: 20),
 
-            // 🍽️ CARD RESTAURANTE
+            // CARD RESTAURANTE
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: _RestaurantCard(),
@@ -75,12 +91,7 @@ class _SearchBar extends StatelessWidget {
         children: [
           Icon(Icons.search),
           SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              "Tacos Arabes",
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
+          Expanded(child: Text("Tacos Arabes", style: TextStyle(fontSize: 16))),
           Icon(Icons.edit),
         ],
       ),
@@ -138,12 +149,7 @@ class _PriceBubble extends StatelessWidget {
       decoration: BoxDecoration(
         color: selected ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 4,
-          )
-        ],
+        boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 4)],
       ),
       child: Text(
         price,
@@ -160,17 +166,13 @@ class _RestaurantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       elevation: 3,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(20),
-            ),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
             child: Image.network(
               "https://picsum.photos/400/200",
               height: 150,
@@ -182,13 +184,10 @@ class _RestaurantCard extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   "Tacos Arabes",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 6),
                 Row(
@@ -206,18 +205,15 @@ class _RestaurantCard extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: null,
+                    onPressed: () => context.push('/detail'),
                     child: Text("Más info"),
                   ),
-                )
-                
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
-
     );
-    
   }
 }

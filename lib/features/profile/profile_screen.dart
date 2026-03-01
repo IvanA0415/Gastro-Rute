@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // Carpeta constans
-import 'package:gastro_rute/core/constants/app_icons.dart'; 
-import 'package:gastro_rute/core/constants/app_sizes.dart'; 
+import 'package:gastro_rute/core/constants/app_icons.dart';
+import 'package:gastro_rute/core/constants/app_sizes.dart';
 
 // Carpeta theme
 import 'package:gastro_rute/core/theme/app_text_styles.dart';
@@ -21,16 +21,13 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 30),
               // Encabezado
               Center(
-                child: Text(
-                  "Hola, usuario",
-                  style: AppTextStyles.pageTitle,
-                ),
+                child: Text("Hola, usuario", style: AppTextStyles.pageTitle),
               ),
               const SizedBox(height: 30),
-              // Foto de Perfil 
+              // Foto de Perfil
               Center(
                 child: Container(
-                  width: AppSizes.profileImageWidth,  
+                  width: AppSizes.profileImageWidth,
                   height: AppSizes.profileImageHeight,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -59,10 +56,7 @@ class ProfileScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "Descripción",
-                        style: AppTextStyles.section,
-                      ),
+                      Text("Descripción", style: AppTextStyles.section),
                       const SizedBox(height: 15),
                       Text(
                         "Apasionada por la gastronomía mexicana, siempre dispuesta a descubrir y probar nuevos menús. Tengo 21 años y soy de Mérida, Yucatán.",
@@ -76,36 +70,6 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 3, 
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: AppColors.white,
-        elevation: 0, 
-
-        selectedItemColor: AppColors.black.withOpacity(AppIcons.activeOpacity),
-        unselectedItemColor: AppColors.black.withOpacity(AppIcons.inactiveOpacity),
-        
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navHome, size: AppIcons.size), 
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navMap, size: AppIcons.size), 
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navFavorites, size: AppIcons.size), 
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navProfile, size: AppIcons.size), 
-            label: "",
-          ),
-        ],
       ),
     );
   }
