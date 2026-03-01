@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gastro_rute/core/constants/app_icons.dart'; 
-import 'package:gastro_rute/core/constants/app_sizes.dart'; 
+import 'package:go_router/go_router.dart';
+import 'package:gastro_rute/core/constants/app_icons.dart';
+import 'package:gastro_rute/core/constants/app_sizes.dart';
 import 'package:gastro_rute/core/theme/app_text_styles.dart';
 import 'package:gastro_rute/core/theme/app_colors.dart';
 
@@ -19,10 +20,10 @@ class MainScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 20),
-                
+
                 // 1. Barra de Búsqueda
                 _buildSearchBar(),
-                
+
                 const SizedBox(height: 15),
 
                 // 2. Filtros y Favoritos
@@ -31,7 +32,7 @@ class MainScreen extends StatelessWidget {
                 const SizedBox(height: 25),
 
                 // 3. Sección de Anuncios (Banner)
-                Text("Anuncios", style: AppTextStyles.section), // 
+                Text("Anuncios", style: AppTextStyles.section), //
                 const SizedBox(height: 10),
                 _buildBannerCard(),
 
@@ -41,22 +42,22 @@ class MainScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Restaurantes", style: AppTextStyles.section), // 
+                    Text("Restaurantes", style: AppTextStyles.section), //
                     const Icon(Icons.arrow_forward_ios, size: 16),
                   ],
                 ),
                 const SizedBox(height: 15),
 
                 // Tarjeta de Restaurante
-                _buildRestaurantCard(),
-                const SizedBox(height: 20),
-                _buildRestaurantCard(), 
+                _buildRestaurantCard(context),
+                SizedBox(height: 16),
+                _buildRestaurantCard(context),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(),
+      //bottomNavigationBar: _buildBottomNav(),
     );
   }
 
@@ -65,17 +66,25 @@ class MainScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: AppColors.searchBackground, // 
+        color: AppColors.searchBackground, //
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: AppColors.border), // 
+        border: Border.all(color: AppColors.border), //
       ),
       child: TextField(
-        style: AppTextStyles.search, // 
+        style: AppTextStyles.search, //
         decoration: InputDecoration(
           hintText: "Tacos Arabes",
-          hintStyle: AppTextStyles.search, // 
-          icon: Icon(AppIcons.search, color: AppColors.black, size: AppIcons.size), // 
-          suffixIcon: Icon(Icons.edit_outlined, color: AppColors.black, size: 20),
+          hintStyle: AppTextStyles.search, //
+          icon: Icon(
+            AppIcons.search,
+            color: AppColors.black,
+            size: AppIcons.size,
+          ), //
+          suffixIcon: Icon(
+            Icons.edit_outlined,
+            color: AppColors.black,
+            size: 20,
+          ),
           border: InputBorder.none,
         ),
       ),
@@ -90,7 +99,7 @@ class MainScreen extends StatelessWidget {
         const SizedBox(width: 10),
         _outlinedButton("Ordenar", Icons.keyboard_arrow_down),
         const SizedBox(width: 10),
-        _outlinedButton("Favoritos", AppIcons.heartBorder), // 
+        _outlinedButton("Favoritos", AppIcons.heartBorder), //
       ],
     );
   }
@@ -100,11 +109,11 @@ class MainScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.border), // 
+        border: Border.all(color: AppColors.border), //
       ),
       child: Row(
         children: [
-          Text(text, style: AppTextStyles.filters), // 
+          Text(text, style: AppTextStyles.filters), //
           const SizedBox(width: 4),
           Icon(icon, size: 16),
         ],
@@ -115,11 +124,11 @@ class MainScreen extends StatelessWidget {
   // Widget: Banner de Anuncios
   Widget _buildBannerCard() {
     return Container(
-      width: AppSizes.carouselAdWidth, // 
-      height: AppSizes.carouselAdHeight, // 
+      width: AppSizes.carouselAdWidth, //
+      height: AppSizes.carouselAdHeight, //
       decoration: BoxDecoration(
-        color: AppColors.greyLight, // 
-        borderRadius: BorderRadius.circular(AppSizes.carouselAdRadius), // 
+        color: AppColors.greyLight, //
+        borderRadius: BorderRadius.circular(AppSizes.carouselAdRadius), //
       ),
       child: Row(
         children: [
@@ -128,7 +137,7 @@ class MainScreen extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20),
               child: Text(
                 "Anuncios",
-                style: AppTextStyles.section, // 
+                style: AppTextStyles.section, //
               ),
             ),
           ),
@@ -150,79 +159,54 @@ class MainScreen extends StatelessWidget {
   }
 
   // Widget: Tarjeta de Restaurante
-  Widget _buildRestaurantCard() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(AppSizes.cardRadius), // 
-              child: Image.network(
-                'https://www.recetasnestle.com.mx/sites/default/files/srh_recipes/0042b50ddf34a966d44f54be5ae248bb.jpg',
-                height: AppSizes.cardHeight, // 
-                width: AppSizes.cardWidth, // 
-                fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              top: 15,
-              right: 15,
-              child: Icon(
-                AppIcons.heart, // 
-                color: AppColors.heartRed, // 
-                size: 28,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Text("Tacos Arabes Felix", style: AppTextStyles.cardTitle), // 
-        Text(
-          "Abierto • Cierra a las 11:00 PM",
-          style: AppTextStyles.cardSubtitle, // 
-        ),
-        Row(
-          children: [
-            Icon(AppIcons.star, size: 18, color: Colors.amber), // 
-            Text(" 4.8 (500 reseñas)  ", style: AppTextStyles.cardSubtitle), // 
-            const Icon(Icons.location_on_outlined, size: 18),
-            Text(" 1.2 millas", style: AppTextStyles.cardSubtitle), // 
-          ],
-        ),
-      ],
-    );
-  }
+  Widget _buildRestaurantCard(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.push('/detail');
+      },
 
-  // Widget: Bottom Navigation Bar
-  Widget _buildBottomNav() {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      currentIndex: 0,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      backgroundColor: AppColors.white, // 
-      elevation: 0,
-      selectedItemColor: AppColors.black.withOpacity(0.7), //  (activeOpacity)
-      unselectedItemColor: AppColors.black.withOpacity(0.3), //  (inactiveOpacity)
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(AppIcons.navHome, size: AppIcons.size), // 
-          label: "",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(AppIcons.navMap, size: AppIcons.size), // 
-          label: "",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(AppIcons.navFavorites, size: AppIcons.size), // 
-          label: "",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(AppIcons.navProfile, size: AppIcons.size), // 
-          label: "",
-        ),
-      ],
+      behavior: HitTestBehavior.opaque,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(AppSizes.cardRadius),
+                child: Image.network(
+                  'https://www.recetasnestle.com.mx/sites/default/files/srh_recipes/0042b50ddf34a966d44f54be5ae248bb.jpg',
+                  height: AppSizes.cardHeight,
+                  width: AppSizes.cardWidth,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Positioned(
+                top: 15,
+                right: 15,
+                child: Icon(
+                  AppIcons.heart,
+                  color: AppColors.heartRed,
+                  size: 28,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text("Tacos Arabes Felix", style: AppTextStyles.cardTitle),
+          Text(
+            "Abierto • Cierra a las 11:00 PM",
+            style: AppTextStyles.cardSubtitle,
+          ),
+          Row(
+            children: [
+              Icon(AppIcons.star, size: 18, color: Colors.amber),
+              Text(" 4.8 (500 reseñas)  ", style: AppTextStyles.cardSubtitle),
+              const Icon(Icons.location_on_outlined, size: 18),
+              Text(" 1.2 millas", style: AppTextStyles.cardSubtitle),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

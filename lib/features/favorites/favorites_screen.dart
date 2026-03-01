@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/constants/app_icons.dart';
 import '../../core/constants/app_sizes.dart';
-
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
@@ -13,10 +13,7 @@ class FavoritesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: Text(
-          "Favoritos",
-          style: AppTextStyles.pageTitle,
-        ),
+        title: Text("Favoritos", style: AppTextStyles.pageTitle),
         centerTitle: false,
         backgroundColor: AppColors.white,
         elevation: 0,
@@ -31,186 +28,172 @@ class FavoritesScreen extends StatelessWidget {
               children: [
                 // Botón Filtrar
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.border),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
                     children: [
-                      Text(
-                        "Filtrar",
-                        style: AppTextStyles.filters,
-                      ),
+                      Text("Filtrar", style: AppTextStyles.filters),
                       const SizedBox(width: 4),
-                      Icon(Icons.keyboard_arrow_down, size: 18, color: AppColors.grey),
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        size: 18,
+                        color: AppColors.grey,
+                      ),
                     ],
                   ),
                 ),
                 const SizedBox(width: 12),
-                
+
                 // Botón Ordenar
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.border),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Row(
                     children: [
-                      Text(
-                        "Ordenar",
-                        style: AppTextStyles.filters,
-                      ),
+                      Text("Ordenar", style: AppTextStyles.filters),
                       const SizedBox(width: 4),
-                      Icon(Icons.keyboard_arrow_down, size: 18, color: AppColors.grey),
+                      Icon(
+                        Icons.keyboard_arrow_down,
+                        size: 18,
+                        color: AppColors.grey,
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 20),
 
             // TARJETA RESTAURANTE 1
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(AppSizes.favoritesCarouselRadius),
-                  child: Image.network(
-                    "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b",
-                    height: AppSizes.favoritesCarouselHeight,
-                    width: double.infinity, // O usa AppSizes.favoritesCarouselWidth si lo prefieres
-                    fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                context.push('/detail');
+              },
+
+              behavior: HitTestBehavior.opaque,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(
+                      AppSizes.favoritesCarouselRadius,
+                    ),
+                    child: Image.network(
+                      "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b",
+                      height: AppSizes.favoritesCarouselHeight,
+                      width: AppSizes.favoritesCarouselWidth,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  "Tacos Arabes Felix",
-                  style: AppTextStyles.cardTitle,
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Abierto · Cierra a las 11:00 PM",
-                      style: AppTextStyles.cardSubtitle,
-                    ),
-                    Icon(
-                      AppIcons.heart,
-                      color: AppColors.heartRed,
-                      size: AppIcons.size,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Icon(AppIcons.star, size: 16, color: AppColors.grey),
-                    const SizedBox(width: 4),
-                    Text(
-                      "4.8 (500 reseñas)",
-                      style: AppTextStyles.cardSubtitle,
-                    ),
-                    const SizedBox(width: 16),
-                    Icon(Icons.location_on_outlined, size: 16, color: AppColors.grey), // Si tienes AppIcons.location, cámbialo aquí
-                    const SizedBox(width: 4),
-                    Text(
-                      "1.2 millas",
-                      style: AppTextStyles.cardSubtitle,
-                    ),
-                  ],
-                ),
-              ],
+                  const SizedBox(height: 12),
+                  Text("Tacos Arabes Felix", style: AppTextStyles.cardTitle),
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Abierto · Cierra a las 11:00 PM",
+                        style: AppTextStyles.cardSubtitle,
+                      ),
+                      Icon(
+                        AppIcons.heart,
+                        color: AppColors.heartRed,
+                        size: AppIcons.size,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Icon(AppIcons.star, size: 16, color: AppColors.grey),
+                      const SizedBox(width: 4),
+                      Text(
+                        "4.8 (500 reseñas)",
+                        style: AppTextStyles.cardSubtitle,
+                      ),
+                      const SizedBox(width: 16),
+                      Icon(AppIcons.navMap, size: 16, color: AppColors.grey),
+                      const SizedBox(width: 4),
+                      Text("1.2 millas", style: AppTextStyles.cardSubtitle),
+                    ],
+                  ),
+                ],
+              ),
             ),
 
             const SizedBox(height: 24),
 
             // TARJETA RESTAURANTE 2
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(AppSizes.favoritesCarouselRadius),
-                  child: Image.network(
-                    "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b", // Puedes cambiar esta URL por otra si quieres
-                    height: AppSizes.favoritesCarouselHeight,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                context.push('/detail');
+              },
+
+              behavior: HitTestBehavior.opaque,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(
+                      AppSizes.favoritesCarouselRadius,
+                    ),
+                    child: Image.network(
+                      "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b",
+                      height: AppSizes.favoritesCarouselHeight,
+                      width: AppSizes.favoritesCarouselWidth,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  "Tacos Arabes Felix",
-                  style: AppTextStyles.cardTitle,
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Abierto · Cierra a las 11:00 PM",
-                      style: AppTextStyles.cardSubtitle,
-                    ),
-                    Icon(
-                      AppIcons.heart,
-                      color: AppColors.heartRed,
-                      size: AppIcons.size,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Icon(AppIcons.star, size: 16, color: AppColors.grey),
-                    const SizedBox(width: 4),
-                    Text(
-                      "4.8 (500 reseñas)",
-                      style: AppTextStyles.cardSubtitle,
-                    ),
-                    const SizedBox(width: 16),
-                    Icon(Icons.location_on_outlined, size: 16, color: AppColors.grey),
-                    const SizedBox(width: 4),
-                    Text(
-                      "1.2 millas",
-                      style: AppTextStyles.cardSubtitle,
-                    ),
-                  ],
-                ),
-              ],
+                  const SizedBox(height: 12),
+                  Text("Tacos Arabes Felix", style: AppTextStyles.cardTitle),
+                  const SizedBox(height: 4),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Abierto · Cierra a las 11:00 PM",
+                        style: AppTextStyles.cardSubtitle,
+                      ),
+                      Icon(
+                        AppIcons.heart,
+                        color: AppColors.heartRed,
+                        size: AppIcons.size,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Icon(AppIcons.star, size: 16, color: AppColors.grey),
+                      const SizedBox(width: 4),
+                      Text(
+                        "4.8 (500 reseñas)",
+                        style: AppTextStyles.cardSubtitle,
+                      ),
+                      const SizedBox(width: 16),
+                      Icon(AppIcons.navMap, size: 16, color: AppColors.grey),
+                      const SizedBox(width: 4),
+                      Text("1.2 millas", style: AppTextStyles.cardSubtitle),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: 2, 
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        backgroundColor: AppColors.white,
-        elevation: 8,
-        selectedItemColor: AppColors.black.withOpacity(AppIcons.activeOpacity),
-        unselectedItemColor: AppColors.black.withOpacity(AppIcons.inactiveOpacity),
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navHome, size: AppIcons.size),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navMap, size: AppIcons.size),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navFavorites, size: AppIcons.size),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(AppIcons.navProfile, size: AppIcons.size),
-            label: "",
-          ),
-        ],
       ),
     );
   }

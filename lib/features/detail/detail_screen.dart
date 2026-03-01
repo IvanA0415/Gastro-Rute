@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gastro_rute/core/constants/app_sizes.dart';
 import '../../core/constants/app_icons.dart';
 import '../../core/theme/app_colors.dart';
@@ -29,7 +30,7 @@ class _DetailScreenState extends State<DetailScreen> {
         leading: IconButton(
           icon: const Icon(AppIcons.back),
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
         title: const Text("Tacos Arabes", style: AppTextStyles.pageTitle),
