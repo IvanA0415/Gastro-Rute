@@ -9,68 +9,74 @@ class MapaScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: SafeArea(
-        child: Column(
-          children: [
-            // BUSCADOR + FILTROS
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  _SearchBar(),
-                  const SizedBox(height: 12),
-                  _FilterRow(),
-                ],
-              ),
-            ),
-
-            // MAPA FALSO
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: SizedBox(
-                height: 260,
-                child: Stack(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // BUSCADOR + FILTROS
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-
-                    Positioned(top: 40, left: 40, child: _PriceBubble("\$234")),
-                    Positioned(
-                      top: 70,
-                      right: 50,
-                      child: _PriceBubble("\$299"),
-                    ),
-                    Positioned(
-                      top: 120,
-                      left: 140,
-                      child: _PriceBubble("\$123", selected: true),
-                    ),
-                    Positioned(
-                      bottom: 40,
-                      left: 90,
-                      child: _PriceBubble("\$345"),
-                    ),
-                    Positioned(
-                      bottom: 70,
-                      right: 70,
-                      child: _PriceBubble("\$176"),
-                    ),
+                    _SearchBar(),
+                    const SizedBox(height: 12),
+                    _FilterRow(),
                   ],
                 ),
               ),
-            ),
 
-            const SizedBox(height: 20),
+              // MAPA FALSO
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: SizedBox(
+                  height: 260,
+                  child: Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
 
-            // CARD RESTAURANTE
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: _RestaurantCard(),
-            ),
-          ],
+                      Positioned(
+                        top: 40,
+                        left: 40,
+                        child: _PriceBubble("\$234"),
+                      ),
+                      Positioned(
+                        top: 70,
+                        right: 50,
+                        child: _PriceBubble("\$299"),
+                      ),
+                      Positioned(
+                        top: 120,
+                        left: 140,
+                        child: _PriceBubble("\$123", selected: true),
+                      ),
+                      Positioned(
+                        bottom: 40,
+                        left: 90,
+                        child: _PriceBubble("\$345"),
+                      ),
+                      Positioned(
+                        bottom: 70,
+                        right: 70,
+                        child: _PriceBubble("\$176"),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // CARD RESTAURANTE
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: _RestaurantCard(),
+              ),
+            ],
+          ),
         ),
       ),
     );
