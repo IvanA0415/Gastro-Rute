@@ -1,14 +1,14 @@
 class AppSizes {
   // 🔹 Imágenes
-  static const double cardWidth = 344;
+  static const double cardWidth = double.infinity;
   static const double cardHeight = 176;
   static const double cardRadius = 20;
 
-  static const double carouselAdWidth = 343;
+  static const double carouselAdWidth = double.infinity;
   static const double carouselAdHeight = 126;
   static const double carouselAdRadius = 8;
 
-  static const double detailCarouselWidth = 351;
+  static const double detailCarouselWidth = double.infinity;
   static const double detailCarouselHeight = 188;
   static const double detailCarouselRadius = 20;
 
@@ -19,7 +19,7 @@ class AppSizes {
   static const double mapCardHeight = 150;
   static const double mapCardRadius = 8;
 
-  static const double favoritesCarouselWidth = 344;
+  static const double favoritesCarouselWidth = double.infinity;
   static const double favoritesCarouselHeight = 176;
   static const double favoritesCarouselRadius = 8;
 

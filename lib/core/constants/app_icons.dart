@@ -13,7 +13,7 @@ class AppIcons {
   static const IconData navHome = Icons.home;
   static const IconData navMap = Icons.location_pin;
   static const IconData navFavorites = Icons.favorite;
-  static const IconData navProfile = Icons.person;
+  static const IconData navProfile = Icons.person_outline;
 
   // Acciones
 
