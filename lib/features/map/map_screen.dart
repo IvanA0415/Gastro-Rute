@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:gastro_rute/core/widgets/filter_buttons.dart';
+import 'package:gastro_rute/core/widgets/search_bar.dart';
 
 class MapaScreen extends StatelessWidget {
   const MapaScreen({super.key});
@@ -10,19 +11,21 @@ class MapaScreen extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       body: SafeArea(
         child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // BUSCADOR + FILTROS
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    _SearchBar(),
-                    const SizedBox(height: 12),
-                    _FilterRow(),
-                  ],
-                ),
-              ),
+              const SizedBox(height: 20),
+
+              // 1. Barra de Búsqueda
+              const CustomSearchBar(),
+
+              const SizedBox(height: 15),
+
+              const CustomFilterButtons(),
+
+              const SizedBox(height: 25),
 
               // MAPA FALSO
               Padding(
@@ -71,73 +74,11 @@ class MapaScreen extends StatelessWidget {
               const SizedBox(height: 20),
 
               // CARD RESTAURANTE
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: _RestaurantCard(),
-              ),
+              //const RestaurantCard(),
             ],
           ),
         ),
       ),
-    );
-  }
-}
-
-class _SearchBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      height: 50,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: const Row(
-        children: [
-          Icon(Icons.search),
-          SizedBox(width: 10),
-          Expanded(child: Text("Tacos Arabes", style: TextStyle(fontSize: 16))),
-          Icon(Icons.edit),
-        ],
-      ),
-    );
-  }
-}
-
-class _FilterRow extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Row(
-          children: [
-            _FilterChip("Filtrar"),
-            SizedBox(width: 8),
-            _FilterChip("Ordenar"),
-          ],
-        ),
-        Text("99 resultados"),
-      ],
-    );
-  }
-}
-
-class _FilterChip extends StatelessWidget {
-  final String text;
-
-  const _FilterChip(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(text),
     );
   }
 }
@@ -163,62 +104,6 @@ class _PriceBubble extends StatelessWidget {
           fontWeight: FontWeight.bold,
           color: selected ? Colors.white : Colors.black,
         ),
-      ),
-    );
-  }
-}
-
-class _RestaurantCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      elevation: 3,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-            child: Image.network(
-              "https://picsum.photos/400/200",
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Tacos Arabes",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 6),
-                Row(
-                  children: [
-                    Icon(Icons.star, size: 16, color: Colors.orange),
-                    SizedBox(width: 4),
-                    Text("4.8 (500 h)"),
-                    SizedBox(width: 10),
-                    Icon(Icons.location_on, size: 16),
-                    SizedBox(width: 4),
-                    Text("1.2 millas"),
-                  ],
-                ),
-                SizedBox(height: 12),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () => context.push('/detail'),
-                    child: Text("Más info"),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
