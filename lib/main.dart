@@ -1,79 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:gastro_rute/core/providers/restaurant_provider.dart';
 import 'package:go_router/go_router.dart';
-import 'core/theme/app_theme.dart';
-import 'features/favorites/favorites_screen.dart';
-import 'features/map/map_screen.dart';
-import 'features/main/main_screen.dart';
-import 'features/profile/profile_screen.dart';
+import 'package:provider/provider.dart';
 import 'core/constants/app_icons.dart';
-import 'core/constants/app_sizes.dart';
 import 'core/theme/app_colors.dart';
-import 'features/detail/detail_screen.dart';
+import 'core/config/app_router.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => RestaurantProvider())],
 
-//  CONFIGURACIÓN DE GO_ROUTER
-final _router = GoRouter(
-  initialLocation: '/main',
-  routes: [
-    StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) {
-        return ScaffoldConBarra(navigationShell: navigationShell);
-      },
-      branches: [
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/main',
-              builder: (context, state) => const MainScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/map',
-              builder: (context, state) => const MapaScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/favorites',
-              builder: (context, state) => const FavoritesScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/profile',
-              builder: (context, state) => const ProfileScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/detail',
-              builder: (context, state) => const DetailScreen(),
-            ),
-          ],
-        ),
-      ],
+      child: const MyApp(),
     ),
-  ],
-);
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(title: 'Mi App', routerConfig: _router);
+    return MaterialApp.router(title: 'Mi App', routerConfig: router);
   }
 }
 

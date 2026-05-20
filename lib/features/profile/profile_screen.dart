@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 // Carpeta constans
-import 'package:gastro_rute/core/constants/app_icons.dart';
 import 'package:gastro_rute/core/constants/app_sizes.dart';
 
 // Carpeta theme
