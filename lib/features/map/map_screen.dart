@@ -305,61 +305,7 @@ class _MapaScreenState extends State<MapaScreen> {
         ),
       ),
 
-      // BOTTOM NAVIGATION
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-
-        currentIndex: 1,
-
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-
-        backgroundColor: AppColors.white,
-
-        elevation: 0,
-
-        selectedItemColor: AppColors.black,
-
-        unselectedItemColor:
-            AppColors.black.withOpacity(0.4),
-
-        
-
-        items: [
-
-          BottomNavigationBarItem(
-            icon: Icon(
-              AppIcons.navHome,
-              size: 24,
-            ),
-            label: "",
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(
-              AppIcons.navMap,
-              size: 24,
-            ),
-            label: "",
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(
-              AppIcons.navFavorites,
-              size: 24,
-            ),
-            label: "",
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(
-              AppIcons.navProfile,
-              size: 24,
-            ),
-            label: "",
-          ),
-        ],
-      ),
+      
     );
   }
 }
